@@ -31,26 +31,25 @@ const header = document.querySelector("header");
 
 //   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 
-function menuMaker(items) {
-  const mainMenu = document.createElement("div");
-  const uList = document.createElement('li')
-  for (let i = 0; i < items.length; i++) {
-    const listItems = document.createElement("li");
-    listItems.appendChild(document.createTextNode(items[i]));
-  }
 
-  mainMenu.appendChild(uList);
-  uList.appendChild(listItems)
+// function menuMaker([array]){
+//   let myMenu = document.createElement('div')
+//   let uList = document.createElement('ul')
+//   for(let i = 0; array.length; i++){
+//       uList = array.length
+//   }
+//   myMenu.appendChild(uList)
 
-  const menuButton = document.querySelector(".menu-button");
-  menuButton.addEventListener("click", function (event) {
-    mainMenu.classList.toggle("menu--open");
-  });
-  return mainMenu;
-}
-const listItems = menuItems.map((menuItems) => {
-  return menuMaker(menuItems);
-});
-listItems.forEach((listItems) => {
-  header.appendChild(listItems);
-});
+//   const menu = document.querySelector('menu-button')
+// menu.addEventListener('click',function(event){
+// myMenu.classList.toggle('menu--open')
+
+// return myMenu
+// })
+// }
+// const menuItemsList = menuItems.map((mapData)=>{
+//   return menuMaker(mapData)
+// })
+// menuItemsList.forEach((item)=>{
+//   header.appendChild(item)
+// })

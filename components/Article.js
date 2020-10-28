@@ -117,8 +117,21 @@ const data = [
   },
 ];
 
+
+//Basic site features
+//grab background
+const back = document.querySelector('body')
+const allArticles = document.querySelector('.articles')
+//change to red on click
+back.addEventListener('keydown',function(event){
+if(event.keyCode === 32){
+  back.style.backgroundColor='black '
+}
+})
+
 //grab the main articles
 const articles = document.querySelector(".articles");
+const buttonHere = document.querySelector('.buttonhide')
 
 //Step 1: Write a component called 'articleMaker' to create an article.
 //Your component is a function that takes an article object as its only argument,
@@ -145,6 +158,7 @@ function articleMaker({
   articleMain.appendChild(p2);
   articleMain.appendChild(p3);
   articleMain.appendChild(mySpan);
+  
   //set the text content to each part of the component
   articleTitle.textContent = title;
   articleDate.textContent = date;
@@ -171,14 +185,42 @@ articleElement.forEach((articleElement) => {
   articles.appendChild(articleElement);
 });
 
-// <div class="article">
-//   <h2>{title of the article}</h2>
-//   <p class="date">{date of the article}</p>
+function hideAllContent(text){
+  const hideAll = document.createElement('button')
+  hideAll.textContent=text
+  hideAll.classList.add('hideAll')
+  hideAll.addEventListener('click', function(event){
+    allArticles.style.display='none';
+    hideAll.style.marginTop='50%';
+    hideAll.style.marginLeft='50%';
+    hideAll.textContent='Show All'
+  })
+  hideAll.addEventListener('dblclick', function(event){
+    allArticles.style.display='initial'
+    hideAll.style.marginTop='0';
+    hideAll.style.marginLeft='0';
+    hideAll.textContent='Hide All'
+  })
+  return hideAll
+}
+function helperButton(text){
+  const helperButtonMe = document.createElement('button')
+  helperButtonMe.textContent=text
+  helperButtonMe.classList.add('hideAll')
 
-//   {three separate paragraph elements}
 
-//   <span class="expandButton">+</span>
-// </div>
+  return helperButtonMe
+}
+const helperButtons = helperButton('Help?')
+const hideAlls = hideAllContent('Hide All')
+buttonHere.appendChild(hideAlls)
+buttonHere.appendChild(helperButtons)
+
+
+
+
+
+
 
 // Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
 // This listener should toggle the class 'article-open' on div.article.
